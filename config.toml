@@ -1,1 +1,8 @@
+baseURL = "https://download.ocamlcore.org/"
+languageCode = "en-us"
 title = "download.ocamlcore.org"
+theme = "forge-theme"
+
+[params]
+  bugReportURL = "https://github.com/ocaml-forge/download.ocamlcore.org/issues/new/choose"
+  googleUA = "UA-44957583-3"
