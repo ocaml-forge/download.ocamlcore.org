@@ -1,0 +1,11 @@
+diff --git a/src/META b/src/META
+index b382048..9bcfd63 100644
+--- a/src/META
++++ b/src/META
+@@ -1,5 +1,5 @@
+ name="bitcask"
+ requires="unix"
+-version="0.1"
++version="0.2"
+ archive(byte)="bitcask.cma"
+ archive(native)="bitcask.cmxa"

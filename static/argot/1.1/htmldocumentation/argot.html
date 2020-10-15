@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Argot 1.1 
+Reference Manual
+</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<META name="GENERATOR" content="hevea 1.10">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+.figure{border-top: thin solid black; border-bottom: thin solid black;}
+.caption{border-bottom: thin solid black;}
+BODY{background:white;}
+.title{padding:1ex;background:white;}
+.titlemain{padding:1ex;background:white;}
+.titlerest{padding:1ex;background:white;}
+.part{padding:1ex;background:#7F7F7F;}
+.section{padding:.5ex;background:#7F7F7F;}
+.subsection{padding:0.3ex;background:#B2B2B2;}
+.subsubsection{padding:0.5ex;background:#E5E5E5;}
+.chapter{padding:0.5ex;background:#7F7F7F;}
+.fmarginpar{border:solid thin #B2B2B2; width:20%; text-align:left;}
+.ffootnoterule{border:none;margin:1em auto 1em 0px;width:50%;background:#7F7F7F;}
+.ftoc1{list-style:none;margin:0ex 1ex;padding:0ex 1ex;border-left:1ex solid #7F7F7F;}
+.ftoc2{list-style:none;margin:1ex 1ex;padding:0ex 1ex;border-left:1ex solid #7F7F7F;}
+.ftoc3{list-style:none;margin:0ex 1ex;padding:0ex 1ex;border-left:1ex solid #7F7F7F;}
+.ftoc4{list-style:none;margin:0ex 1ex;padding:0ex 1ex;border-left:1ex solid #B2B2B2;}
+.ftoc5{list-style:none;margin:0ex 1ex;padding:0ex 1ex;border-left:1ex solid #E5E5E5;}
+.ftoc6{list-style:none;margin:0ex 1ex;padding:0ex 1ex;border-left:1ex solid #CCFFCC;}
+/* Argot icons -- from the "Silk icon set 1.3" by Mark James, available at http://www.famfamfam.com/lab/icons/silk/ */
+.argot_attention { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJPSURBVDjLpZPLS5RhFMYfv9QJlelTQZwRb2OKlKuINuHGLlBEBEOLxAu46oL0F0QQFdWizUCrWnjBaDHgThCMoiKkhUONTqmjmDp2GZ0UnWbmfc/ztrC+GbM2dXbv4ZzfeQ7vefKMMfifyP89IbevNNCYdkN2kawkCZKfSPZTOGTf6Y/m1uflKlC3LvsNTWArr9BT2LAf+W73dn5jHclIBFZyfYWU3or7T4K7AJmbl/yG7EtX1BQXNTVCYgtgbAEAYHlqYHlrsTEVQWr63RZFuqsfDAcdQPrGRR/JF5nKGm9xUxMyr0YBAEXXHgIANq/3ADQobD2J9fAkNiMTMSFb9z8ambMAQER3JC1XttkYGGZXoyZEGyTHRuBuPgBTUu7VSnUAgAUAWutOV2MjZGkehgYUA6O5A0AlkAyRnotiX3MLlFKduYCqAtuGXpyH0XQmOj+TIURt51OzURTYZdBKV2UBSsOIcRp/TVTT4ewK6idECAihtUKOArWcjq/B8tQ6UkUR31+OYXP4sTOdisivrkMyHodWejlXwcC38Fvs8dY5xaIId89VlJy7ACpCNCFCuOp8+BJ6A631gANQSg1mVmOxxGQYRW2nHMha4B5WA3chsv22T5/B13AIicWZmNZ6cMchTXUe81Okzz54pLi0uQWp+TmkZqMwxsBV74Or3od4OISPr0e3SHa3PX0f3HXKofNH/UIG9pZ5PeUth+CyS2EMkEqs4fPEOBJLsyske48/+xD8oxcAYPzs4QaS7RR2kbLTTOTQieczfzfTv8QPldGvTGoF6/8AAAAASUVORK5CYII=); background-repeat:no-repeat; }
+.argot_bug { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKYSURBVDjLnZPJT1NRFMb5G1wDHV5boNiqdHrvFYolCAtsGSSWKpMFKhYqlDI6oAEKaVJwCIgSphaKtLYWCgSNBgRjMNHoxsSFS3cmJmA0NMTw+R6JKKZl4eJL7sm953fOd3JPHIC4WMpcppG5SGnZc8ZjVVF6QLn975sDgfaZmvg71oRJZIRUYcuAnq/2KWroGfm3QwEn2YpLVPPvOD2oiqj9yq/mGznegl56mx6T7ZbY1M6YAM0CuZkxT0b2Wg6QW/SsApRXDsotR+d6E9Y/h9DuqoCuJq0lKoDxqU1/pITGR27mBU4h+GEcTz5OY+ClA5JbyahYzof/9TBO9B/FcWcqpA4xU3We3GJ87ntnfO5meinMvruNnqcmXA2XoDVcCc0wCYkzBaZpA7ILRJ/2O2B87jA+QT9UeDRe8svZYAG8b/txc6kc9mA+yqayYPQXwvdmBEOrA5B2p0BtFIYOWKCm5RukWwZyXIbA+0F0LpaiKaBHmVsLw4we99ccsM8a8GClF5JOMcQdou8prULrgRmQo7KI0VcE13MrGv06lE5kodhzGvdWu2GdKkTVWC4DcELcJkKyXbCb1EhAVM//M0DVUNqP2qAJd1baUDaZjTMTeXAttsPi0cM0mgvHvA0NkxYk2QRIrieOsDmEmXttH0DfVfSluSToWmpD8bgOroUOWNw6VI7koGfOBuq6EqLLTNU6ojrmP5D1HVsjmrkYezGIrlA9LjKgnrlGXJlpgbCOD0EtD0QNN8I3cZqjAlhJr4rXpB1iNLhrYffUQWoT7yUKzbxqJlHLq0jc5JYmgHMunogKYJVqF7mTrPyfgktMRTMX/CrOq1gLF3fYNrLiX+Bs8MoTwT2fQPwXgBXHGL+TaIjfinb3C7cscRMIcYL6AAAAAElFTkSuQmCC); background-repeat:no-repeat; }
+.argot_error { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHdSURBVDjLpZNraxpBFIb3a0ggISmmNISWXmOboKihxpgUNGWNSpvaS6RpKL3Ry//Mh1wgf6PElaCyzq67O09nVjdVlJbSDy8Lw77PmfecMwZg/I/GDw3DCo8HCkZl/RlgGA0e3Yfv7+DbAfLrW+SXOvLTG+SHV/gPbuMZRnsyIDL/OASziMxkkKkUQTJJsLaGn8/iHz6nd+8mQv87Ahg2H9Th/BxZqxEkEgSrq/iVCvLsDK9awtvfxb2zjD2ARID+lVVlbabTgWYTv1rFL5fBUtHbbeTJCb3EQ3ovCnRC6xAgzJtOE+ztheYIEkqbFaS3vY2zuIj77AmtYYDusPy8/zuvunJkDKXM7tYWTiyGWFjAqeQnAD6+7ueNx/FLpRGAru7mcoj5ebqzszil7DggeF/DX1nBN82rzPqrzbRayIsLhJqMPT2N83Sdy2GApwFqRN7jFPL0tF+10cDd3MTZ2AjNUkGCoyO6y9cRxfQowFUbpufr1ct4ZoHg+Dg067zduTmEbq4yi/UkYidDe+kaTcP4ObJIajksPd/eyx3c+N2rvPbMDPbUFPZSLKzcGjKPrbJaDsu+dQO3msfZzeGY2TCvKGYQhdSYeeJjUt21dIcjXQ7U7Kv599f4j/oF55W4g/2e3b8AAAAASUVORK5CYII=); background-repeat:no-repeat; }
+.argot_info { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKcSURBVDjLpZPLa9RXHMU/d0ysZEwmMQqZiTaP0agoaKGJUiwIxU0hUjtUQaIuXHSVbRVc+R8ICj5WvrCldJquhVqalIbOohuZxjDVxDSP0RgzyST9zdzvvffrQkh8tBs9yy9fPhw45xhV5X1U8+Yhc3U0LcEdVxdOVq20OA0ooQjhpnfhzuDZTx6++m9edfDFlZGMtXKxI6HJnrZGGtauAWAhcgwVnnB/enkGo/25859l3wIcvpzP2EhuHNpWF9/dWs/UnKW4EOGDkqhbQyqxjsKzMgM/P1ymhlO5C4ezK4DeS/c7RdzQoa3x1PaWenJjJZwT9rQ1gSp/js1jYoZdyfX8M1/mp7uFaTR8mrt29FEMQILr62jQ1I5kA8OF59jIItVA78dJertTiBNs1ZKfLNG+MUHX1oaURtIHEAOw3p/Y197MWHEJEUGCxwfHj8MTZIcnsGKxzrIURYzPLnJgbxvG2hMrKdjItjbV11CYKeG8R7ygIdB3sBMFhkem0RAAQ3Fuka7UZtRHrasOqhYNilOwrkrwnhCU/ON5/q04vHV48ThxOCuoAbxnBQB+am65QnO8FqMxNCjBe14mpHhxBBGCWBLxD3iyWMaYMLUKsO7WYH6Stk1xCAGccmR/Ozs/bKJuXS39R/YgIjgROloSDA39Deit1SZWotsjD8pfp5ONqZ6uTfyWn+T7X0f59t5fqDhUA4ry0fYtjJcWeZQvTBu4/VqRuk9/l9Fy5cbnX+6Od26s58HjWWaflwkusKGxjm1bmhkvLXHvh1+WMbWncgPfZN+qcvex6xnUXkzvSiYP7EvTvH4toDxdqDD4+ygT+cKMMbH+3MCZ7H9uAaDnqytpVX8cDScJlRY0YIwpAjcNcuePgXP/P6Z30QuoP4J7WbYhuQAAAABJRU5ErkJggg==); background-repeat:no-repeat; }
+.argot_new { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEMSURBVDjL3ZLBSgJRFIYvtO0BfIPeI3qBNj2Cy1rWzlWbkcBNYhC0TletJKOFq1lIILhQJCywaDZOkINiGl/n3DNj6LaF4MDHGebc/5tz544D3H9w2yAI3LkQp7UgREJRSIS+0BJqwr6QTzkWulqdD09juD3Ah5PI7r8TiPvw0YJeDUq7cJ83NDzqwmUOFUyYT/ASfasGm6d4kQo1OB3JszN4fTDujuBrqP2hW4baVxbMBIuZTfAeQucGxm/w+WzB6AleGipo/Am06hTrEwQupLhjwkFdtlOFnzlc72n/cFWgQb3WJ8i22a7A44mtCfQQ7BSyL6617BtWZ+kphMKFlwSusrJmW/7ETQt+AQhq/TxibW0lAAAAAElFTkSuQmCC); background-repeat:no-repeat; }
+.argot_note { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGGSURBVDjLxZO/alRBFMZ/c6MmomKhBLv4AIJiYekjCFopKSzyCnkGW99BbMTOQhsrBcFKsLCJhRYBNYYsWXNn5s6Z81nMGu+626XwFDOHge/PmfkmSOIk1XHCOvWn0ZdXsulPpAFZQbUgG5BlVDOURLWELEJJXLz3JMwTVOP0tfsLChIEmC2A4OD5g0UHebLLWQl5bAcBJAcC4i9D6FZRiUtGMMOHb9j0PXhGGtruA3hCnpBHzly+i5d+CUHNgCFPoDIDjcEJeQ8yNCxxYL/2m+U55Yh7mpFE8NhE7GiRwGsi7bzF8meoA8io6ZC1jfWm7AnVCPLld1DjPna4y/kbm4Djw1emH56h2oN6VFNzIKOOCI6DFCTKj48cvN6m9jtQC64yAjcXrjrnoBu/94VbDymTPSZvHs/A6RgsT0gZqC1M/46AJcJKx7mbW8RPL5m+e8HKpeusXbmNI1AFDHBkmZHzFpO9p3fkJSNLqEQsfgc6uhCQJRgy7qlF2ypXHynMEfy33/gbubc6XKsT2+MAAAAASUVORK5CYII=); background-repeat:no-repeat; }
+.argot_remark { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEvSURBVDjLY/j//z8DJZiBagZEtO8QAuKlQPwTiP/jwbuAWAWbARtXHrz1//efv//xgS0n74MMuQ3EbHADgBweIP7z99+//x++/fv/8tO//88+/vv/5P2//w/f/ft/782//7df/f1/5xXE8OoFx0GGmCEbIJcz9QBY8gVQ47MP//4/Bmp+8Pbf/7tQzddf/P1/9RnEgM5VZ0EGeGM14ClQ86N3UM2v//2/9RKi+QpQ88UnuA2AewHk/PtAW++8/vv/JlDzted//18Gar7wBGTAH7ABtYtOgAywxBqIIEOQAcg1Fx7/BRuMFoicuKLxDyzK5u64Cjfo/ecfYD5Q/DLWaMSGgQrvPH/3FabxOxDXEp0SgYp7Z267AtL4BYgLSUrKQA1KQHwPiFPolxcGzAAA94sPIr7iagsAAAAASUVORK5CYII=); background-repeat:no-repeat; }
+.argot_search { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAH5SURBVDjLpZK/a5NhEMe/748kRqypmqQQgz/oUPUPECpCoEVwyNStIA6COFR33boIjg6mg4uL0k0EO1RFISKImkHQxlbQRAsx0dgKJm/e53nunnOwViR5leJnuZs+973jHBHB/+D/ah7X2LXWloilyMw5YgtD3CDiBWN4Zno8bQcJHBFBucauZfsolZDCru0OfFcAAUISrLZDfPzSKxuiibOT+T6JCwDMtrQzYQvZHQ5Cw2h3GK0OI9AWBzJJZFOxgtJUGpTABQAiLu5OOviuGIEWkBUwC7pasNZj7N2ThNJUjBQY4pznAoEWsBWwxU+JFXSVRTzmQWvKRR5RG4KVGMgKrAVYflexAAugDCEygdbUCI2F7zobk7FZY76DIDQgrT9HCwwt1FsBhhIu4p4D3kiS8B0MJz28ftfGSPfl8MPLxbGBAqVpptbslJc+fEPMA7JDPrIpH3FX8LzaROdrE5O51jalgid3Lh4b6/sDALh6971riErGcFET58gwDPGndG9JT6ReHcwfPorGygu8rdxvGxMeP3XtzcofgigWZ0/EtQ7n0/sOTe0/Mo7V5WeoVu61z1yvZzZX+BsnZx9opYLpevXp7eXKIrL5UWit0n0r/Isb50bjRGreiyWmgs76lfM31y5tSQAAc6czHjONXLi13thygih+AEq4N6GqMsuhAAAAAElFTkSuQmCC); background-repeat:no-repeat; }
+.argot_stateful { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAI8SURBVDjLpVNNiFJRFP70ac80w6FEJ2FqsDKmSRpmU6taBRGE4aaCYPatat1qtu3aRosJI4Ro0Q+EIP0QCTM4WhSBBqmkJJr2cvx53vfu69w3vXIapUUPPs69553zne+ee67NMAz8z+cY3aTTaZkIzxMucc6PkD1EoCV/T/YT2TuEdCwW060cm6WAkudofd/v90eDwSA8Hg/cbjfEf0VR0Ol0UKlU0Gg0XpPvYjwer5qJIkAglUo9L5fLopwx6WOMGblczkgmkytWnt2SQpujgUDgn2cOhUKgIme39YCcJmO9XofL5YIsy3A6naav1+uh1WqhWq0iHA6bsRMJHA4H2u02BoOBudc0DUzJw8PygHTG9I0lsM4kSZKpQBAJMHUDanMNe2ZOQS3lKXkeuv77Ev70wFJgVmTMhAjUGi8xte8Edk8vwNl9C32jtEXBNgIziUhMdGsYfn0B714f9B+PMH3sCvrlJ+A6m0xgVdc0BvXLM/gjF4DBOlbv3sMuXx+DWhZevSSPJRCwquvKR8i2IbxTPXD1MzWJk/w1zJ6+jiBb96zeOundQiCki6uiSYS8QwKvPIVv5jh47x3l9rEYj4APa9TgAg5Ez0maOrz2t4KlTCbTLRaLcH7PUuOicHubMLRvNPASsg8LIgp8UID/8H7oKrv6anl+zjb6GhOJxCwR3TiorCwtXL5tl+wlImiLSx6ZRTuknRHUP+RReLz8wDbuOb+5udg0dO6mY9sN0Vyu801Ls/LLYrPp2Z9W3anPTwD1kQAAAABJRU5ErkJggg==); background-repeat:no-repeat; }
+.argot_threadsafe { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALcSURBVDjLjZJpSNNxHMb/VhTUi3pjVFoyj+wyPDG1sDUTE7ES1zCPuXRbZjZrSk63qVPzKNuc+ncmHmPOeU3nkYkEmnjhlVdaBPoiddGbMDEoj6clZEYlvnhe/fh8+P4eHgIAsVWE/kdY4wVWC7NqE0yXUZZLeebFvs7mu3+9bwnzvE1pMyrK6lzFYWxOYaSFbFuCYqaxfK7OEfOtbHzty8a81g1zmqOYKLD4vC0B6b8/Wz/SioVuEssjSiz2kJh93YL2FLuZbQn8vG9wJssfrH0ZrcXqVB2WJnTQd8ghCbmo/aeAQ7Vi5bMuLciDqSBDacsRDJtB+cPI73otHx8akqFvFKFLcRdn2adbnGLP7PtDwHSzpOWzPFZlgVRsTomUh9zCVGTmiZD4JBYNb8qR1i6Bjdi6zJZ/fO+GQMqw73oWcQ11SWGYrBBCzadDHkyDguuB0hEhotSuYJfaIX0gGjVvixGti4JLhBO5IchjWNS8b9f8VZgmngrpcBzClY5IbroJhuIE4nq5YJGhmCZ9/18YT30B91TnwFU6gFVsC2E9HdUDOYipuYrL0kMIkDIwX+TzW7DDIUeQJ4jaKCxS5QzdMAntUN46WDkgg+xlDJS9Wbit9oRT+p61riIf9jps5FYZ7scfWuz4CDyq1kJUokGY4b8/4adtPGS2RiKthYOkJhYkz7lQdKYgqOw8rBKJFYLiraDTec1LjVOrSJ0E2P1ASAcQWHQSVf0yqA0LVPZkoaQ7wyC5g4JOCThqL1BExCcTAWFLjKU6rgzW5oJfrwezFWDq1hCoWcP1AnNcyTEFTXoQbo8PIKTUFeSrJNxSecJMROgPC4hT6zuYyXGfr027jwBxHzhtAOuF4QIdENwIBDUDjIxpiPnpsE/dBaaSBrMEYtYAW28s8Z2K69Ii8Yt3ppfrHKMHQBWPGTIOqnAU7vFDsPCqmsmNCU+yFBt9O5awE8YCgrJ5vT8AXgaV02he+4MAAAAASUVORK5CYII=); background-repeat:no-repeat; }
+.argot_threadunsafe { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALcSURBVDjLjZFpMNRxGMfVi17UNL3qRdcLRI2jiUgyHdp6ozIlco3Whm1c49gwmyNndGBtLB3uRdPuCrOtnWoPokGMs5WwMth1S9q/Y+PbzjaJqTFefOb34jffzzPP99EBoLMRUY57KZ3ZBrPDJfsgL9BV5wfp5dpb6W37879hOMhuP2mgWHd5pHQP1vLEX5+xKUEueTdzpNwCCqEPiIZUKHg2GCk7gK5s/ZlNCViOu1KVbULM1rOgbivE3AcWhlsFkCSYDWxK4GB3nSpjh658b+diubscqq4KKKVMxN84y/uvgGprQMminJtletiC5UlS+zqbNjMj/JeUPBqGKuOgrIpGXU4AjvgYCyzDTHasE5BtDpKyKOeXGe62WEteehC4pRFo5nshmUFD5Sc2kiTxMI05VHCUZrh9VZDubF731PcKymO9ICuNQgnNCUwPEp4HXECnmIypXg6E0ptIaQkF53MugisCYe1ryVoVZDrrc3olZf8UVpNzERPdbKh/9KGj8hrS6r1Bb/QDheUJOct+48JGxClo517FwgQfC4o0TPe/hqTKGeF8P7ilu0Hx7NJfwdZjGfRMeuC6wlrZLpjs4WJhKB61KcewNMVFax4JIY9OjYVRY2Pl+a7u2vAWmxfeDrSWOekocO8lD9F5ZWDkJGNAFInF8SIQfRTUJpthfjAC3+QCNGWelDVmnNipvYKuXY6TUxBfVdW9jEQZ4NMEUCRqVBf5YkZT3PzX21B9cflNr4dmFQYGa5iof2AeoxV0JFr8bOY+Bu2VEmQhQK5YwcPCcgzWpmFxNFs7XdXrrlnBXPsScj8QykrUJpiO1cQZG+kMZJxRcJNC4BrTAOobzfRqQJx5GcRkPxanRVgY13QwzlkDD+q5Lgw3sCGONOTo9BTfshbEO9yxcmJXWAR/hG1MB97ePw1J8nGIkywhijNbkcaZqKV3jRYl0YcJTYgQ0Q0IUYQ+8S5c7/0vfNrCXhlwpm0AAAAASUVORK5CYII=); background-repeat:no-repeat; }
+.argot_todo { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKwSURBVDjLbVPPaxNBGH27m5jdaH5ZjU3SFkRiWkwt0l4qFupFEY/Bg/jj6MGLIPQigtCDf4BXLYZKK6UJSL2Ih4AGLGltTSUh1pgaJBXTEkNMY9NNdtf5Rlva2IFvv9mZN9978z5GMAwDrSMejz+sVCo3y+Wyl/5dLtd3h8MxPjQ0dO8/MBXYHdFo1D01NaUaLYPWJicnva14gT7/GK8yxi5WU2Rs8Pv9CAQCHJTJZLCysgKGIU6dKfrGMM+5IgKw6vXdbPl83ohEIsbS0hKP6elpvtaiiM5A6uvreypJ0gD9tLW18YLLy8toNptgh1AsFmG326FpGjweD3RdRzqdJjWm2dnZgIktXA8Gg6jVamBsYMWwurqKUCi0xyvmDaxWKxqNBsc6nU6USqUrImOs+Xw+dHR0gO5us9ngdruRzWY5G0Xu4wyCh9/BYmqA+QRVVakzpLZm2m6jLMswm82oVqs8k2GpVIq5rEIuvcbRrmHkc69gls/t6Z64XYAysSmKgs7OTq7GYrFAK8Xh8g7C7jkDpZ6CRV/nePKEF2ATRRRFUND9SB5lQRCg13/gQHUetiNOaL9m0N57A+byG+hak5OxszIpeJtIJLhkMolMpE3DYLEWw7EeZmZ9EXPjEzjk3IRU+QTLZha5XI4UJEQGvlwoFG7FYrEvyWSSM1PbhI0srJIGm+s39K2v7I6McWMex4fvQsu/aGz8LIywApeEbQ/C4bCbze+wuN0d8DudxWfwnr4A2ZyArhb+9lIwQzrYj2JWRCERfnB2ZGFUaH1MY2Njpzz6h3Cw+8RA+0mFsc4xqSoWohn0h3ogSA5AuYj3T+6vGbp+XtjvNc49Giz0XpvwSWIeRrNMPdq1K0JSAiimk/j8cjRiwj6juaXKi49Dm4bOek2G7oSxk8GNNtr/AJE93CiYMK0yAAAAAElFTkSuQmCC); background-repeat:no-repeat; }
+.argot_todoc { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIBSURBVDjLlZPNTxNBGIeLV/8FNUYisaIRqOHswat3DfHgzXhUIwQIQWKUgyFq2pgm6oHgxcKBiJ76YRcS8CJJNVFoqZSaXbof3e3H7s52qz9nRoZIkRQneTKT7LzPvL/JTgBAgI5jlBClvw0nKUdYjSCwIwgRQizf9382m038C/od4XD4aatECPpZcb1eh23bu1QqFZimiVKpxCWKoiASieyRsNHBBGyD67rwPI/PjFqtBsuyoKoqFziOA3ZINBrlkn0CVixgAlZQrVahadq+SDt30rFHQGPsbmBrlltE0XWddyLL8sGCVoSkXFzE1sooDG0LhmEcXsBjuVUUlu7AyMYgZ17ySP8l0NfeQPs6A7+ew9rbAZjK58MLHGsT6wvXQbQFEHkK5Y13yKfG4DdIe4HfaKC4/Jh2MAtSnIA0GULDmMXqq8swcqn2Aqv4Ed8TI/DUaTi5G5Ae9cItDMLKv0fm9TUETxy9dKCAtfht/iZMenHu5l3Y61f/kKVx5CcopJ9h+nYw2ir4JQTbmTkUpCl428/56XZ2gEbo47OTvwVHmUdy/Fw5fb/7rHgLF+nfZ9Ni/pg+vbgCR9+AV06AqPQO1NhfzMGvfcGPlRkkR7piQnCcScSzlSZ7LelhD0k/uEA+TJwnqfFukhwLkuToGZIY7iLxodMkPtjpxu+dWvwNhj+uekyCXgUAAAAASUVORK5CYII=); background-repeat:no-repeat; }
+.argot_tofix { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALbSURBVDjLfZHrM5RhGMb9A33uq7ERq7XsOry7y2qlPqRFDsVk0c4wZZgRckjJeWMQRhkju5HN6V1nERa7atJMw0zMNLUow1SOUby7mNmrdzWJWn245nnumee+7vt3PRYALI6SZy8fnt08kenu0eoW4E666v9+c6gQDQgYB2thJwGPNrfOmBJfK0GTSxT/qfP3/xqcNk3s4SX9rt1VbgZBs+tq9N1zSv98vp5fwzWG3BAUHGkg7CLWPToIw97KJLHBb3QBT+kMXq0zMrQJ0M63IbUoAuIozk2zBjSnyL3FFcImYt2HPAvVlBx97+pRMpoH1n1bRPT6oXmsEk7Fp+BYYA+HPCY9tYPYoDn32WlOo6eSh8bxUuQ+lyK9MwTJnZEQVhJgFdhBWn8Z3v42uv0NaM4dmhP8Bpc6oZJYuqTyh/JNMTJ7wpGo8oPkiRfyO4IxOXId1cOFcMixgyDUuu0QAq/e+RVRywUh54KcqEBGdxgSSF9IakUIb/DD24FIrOpaoO6PBSuDCWaazaZdsnXcoQyIR1xDaFMAigbjEN8sRpjCC0F1F9A3EIdlOofdzWlMtgfDN5sN28QTxpPxDNjEWv0J0O0BZ+uaSoqyoRRIHnsjUOGDqu4ETLRehGG5G4bPJVib6YHioRDiVPvjph5GtOXtfQN+uYuMU8RCdk8KguRiFHelobVBjJX3JAzz2dDe42JnlcSE/IxxvFoUaPYbuTK2hpFkiZqRClSRUnxUp2N7qQ7U9FVoZU7Qz6VgffYZBkuJxddlxLF/DExySGdqOLfsMag4j290cPpPSdj6EPJLOgmNUoo5TTnac9mlZg1MypJxx+a0Jdj+Wrk3fUt3hUbg7J3UbAyoLx3Q5rAWNVn2TLMG9HoL1MoMttfUMCzRGSy1HJAKuz+msDBWj6F0mxazBi8LOSsvZI7UaB6boidRA5lM9GfYYfiOLUU3Ueo0a0qdwqAGk61GfwIga508Gu46TQAAAABJRU5ErkJggg==); background-repeat:no-repeat; }
+.argot_warning { border: 0px; width: 24px; height: 24px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIsSURBVDjLpVNLSJQBEP7+h6uu62vLVAJDW1KQTMrINQ1vPQzq1GOpa9EppGOHLh0kCEKL7JBEhVCHihAsESyJiE4FWShGRmauu7KYiv6Pma+DGoFrBQ7MzGFmPr5vmDFIYj1mr1WYfrHPovA9VVOqbC7e/1rS9ZlrAVDYHig5WB0oPtBI0TNrUiC5yhP9jeF4X8NPcWfopoY48XT39PjjXeF0vWkZqOjd7LJYrmGasHPCCJbHwhS9/F8M4s8baid764Xi0Ilfp5voorpJfn2wwx/r3l77TwZUvR+qajXVn8PnvocYfXYH6k2ioOaCpaIdf11ivDcayyiMVudsOYqFb60gARJYHG9DbqQFmSVNjaO3K2NpAeK90ZCqtgcrjkP9aUCXp0moetDFEeRXnYCKXhm+uTW0CkBFu4JlxzZkFlbASz4CQGQVBFeEwZm8geyiMuRVntzsL3oXV+YMkvjRsydC1U+lhwZsWXgHb+oWVAEzIwvzyVlk5igsi7DymmHlHsFQR50rjl+981Jy1Fw6Gu0ObTtnU+cgs28AKgDiy+Awpj5OACBAhZ/qh2HOo6i+NeA73jUAML4/qWux8mt6NjW1w599CS9xb0mSEqQBEDAtwqALUmBaG5FV3oYPnTHMjAwetlWksyByaukxQg2wQ9FlccaK/OXA3/uAEUDp3rNIDQ1ctSk6kHh1/jRFoaL4M4snEMeD73gQx4M4PsT1IZ5AfYH68tZY7zv/ApRMY9mnuVMvAAAAAElFTkSuQmCC); background-repeat:no-repeat; }
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: hevea -fix -O -exec /usr/local/lib/hevea/xxdate.exe book.hva -o argot.html article.hva fancysection.hva argot.tex -->
+<!--CUT DEF chapter 1 --><TABLE CLASS="title"><TR><TD><H1 CLASS="titlemain">Argot 1.1<BR>
+Reference Manual</H1><H3 CLASS="titlerest">Copyright &#XA9; 2010-2012 Xavier Clerc &#X2013; <A HREF="mailto:argot@x9c.fr">argot@x9c.fr</A><BR>
+Released under the <SPAN STYLE="font-variant:small-caps">gpl</SPAN> v3</H3><H3 CLASS="titlerest">August&#XA0;5, 2012</H3></TD></TR>
+</TABLE><!--TOC chapter Contents-->
+<H1 CLASS="chapter"><!--SEC ANCHOR -->Contents</H1><!--SEC END --><UL CLASS="ftoc1"><LI CLASS="li-toc">
+<A HREF="#htoc1">Chapter&#XA0;1&#XA0;&#XA0;Overview</A>
+<UL CLASS="ftoc2"><LI CLASS="li-toc">
+<A HREF="#htoc2">1.1&#XA0;&#XA0;Purpose</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc3">1.2&#XA0;&#XA0;License</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc4">1.3&#XA0;&#XA0;Contributions</A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc5">Chapter&#XA0;2&#XA0;&#XA0;Building Argot</A>
+<UL CLASS="ftoc2"><LI CLASS="li-toc">
+<A HREF="#htoc6">2.1&#XA0;&#XA0;Step 0: dependencies</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc7">2.2&#XA0;&#XA0;Step 1: configuration</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc8">2.3&#XA0;&#XA0;Step 2: compilation</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc9">2.4&#XA0;&#XA0;Step 3: installation</A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc10">Chapter&#XA0;3&#XA0;&#XA0;Running Argot</A>
+<UL CLASS="ftoc2"><LI CLASS="li-toc">
+<A HREF="#htoc11">3.1&#XA0;&#XA0;Through direct call to <TT>ocamldoc</TT></A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc12">3.2&#XA0;&#XA0;Through <TT>ocamlbuild</TT></A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc13">Chapter&#XA0;4&#XA0;&#XA0;Argot formatting</A>
+<UL CLASS="ftoc2"><LI CLASS="li-toc">
+<A HREF="#htoc14">4.1&#XA0;&#XA0;Text formatting</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc15">4.2&#XA0;&#XA0;Tables</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc16">4.3&#XA0;&#XA0;Token substitution</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc17">4.4&#XA0;&#XA0;Images</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc18">4.5&#XA0;&#XA0;Folding</A>
+</LI></UL>
+</LI><LI CLASS="li-toc"><A HREF="#htoc19">Chapter&#XA0;5&#XA0;&#XA0;Argot tags</A>
+</LI><LI CLASS="li-toc"><A HREF="#htoc20">Chapter&#XA0;6&#XA0;&#XA0;Search</A>
+</LI></UL><!--TOC chapter Overview-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc1">Chapter&#XA0;1</A>&#XA0;&#XA0;Overview</H1><!--SEC END --><!--TOC section Purpose-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc2">1.1</A>&#XA0;&#XA0;Purpose</H2><!--SEC END --><P>
+The OCaml<SUP><A NAME="text1" HREF="#note1">1</A></SUP>distribution contains a tool named <TT>ocamldoc</TT> whose duty is to produce <SPAN STYLE="font-variant:small-caps">api</SPAN> documentation by extracting information from source comments. Argot is an enhanced <SPAN STYLE="font-variant:small-caps">html</SPAN> generator for <TT>ocamldoc</TT> providing additional text formatting, additional tags, and support for symbol search. The name &#X201C;Argot&#X201D; stems from the following acronym: <I>Argot is a Raised Generator for the Ocamldoc Tool</I>.</P><!--TOC section License-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc3">1.2</A>&#XA0;&#XA0;License</H2><!--SEC END --><P>
+Argot is distributed under the terms of the <SPAN STYLE="font-variant:small-caps">gpl</SPAN> version 3. This licensing scheme should not cause any problem, as documentation generation will not contaminate code. Moreover, generated documentation files can be used without any restriction.</P><!--TOC section Contributions-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc4">1.3</A>&#XA0;&#XA0;Contributions</H2><!--SEC END --><P>
+In order to improve the project, I am primarily looking for testers and bug reporters. Pointing errors in documentation and indicating where it should be enhanced is also very helpful.<BR>
+Bugs and feature requests can be made at <TT><A HREF="http://bugs.x9c.fr">http://bugs.x9c.fr</A></TT>.<BR>
+Other requetes can be sent to <A HREF="mailto:argot@x9c.fr">argot@x9c.fr</A>.
+
+</P><!--BEGIN NOTES chapter-->
+<HR CLASS="ffootnoterule"><DL CLASS="thefootnotes"><DT CLASS="dt-thefootnotes">
+<A NAME="note1" HREF="#text1">1</A></DT><DD CLASS="dd-thefootnotes">The official OCaml website can be reached at <TT><A HREF="http://caml.inria.fr">http://caml.inria.fr</A></TT> and contains the full development suite (compilers, tools, virtual machine, <I>etc.</I>) as well as links to third-party contributions.
+</DD></DL>
+<!--END NOTES-->
+<!--TOC chapter Building Argot-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc5">Chapter&#XA0;2</A>&#XA0;&#XA0;Building Argot</H1><!--SEC END --><!--TOC section Step 0: dependencies-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc6">2.1</A>&#XA0;&#XA0;Step 0: dependencies</H2><!--SEC END --><P>
+Before starting to build Argot, one first have to check that dependencies are already installed. The following elements are needed in order to build Argot:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+OCaml, version 4.00.0;
+</LI><LI CLASS="li-itemize"><TT>make</TT>, in its GNU Make 3.81 flavor;
+</LI><LI CLASS="li-itemize">a classical Unix shell, such as <TT>bash</TT>;
+</LI><LI CLASS="li-itemize"><B>optionally:</B> Findlib<SUP><A NAME="text2" HREF="#note2">1</A></SUP>, version 1.3.3.
+</LI></UL><!--TOC section Step 1: configuration-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc7">2.2</A>&#XA0;&#XA0;Step 1: configuration</H2><!--SEC END --><P>
+The configuration of Argot is done by executing <TT>sh configure</TT>. One can specify elements if they are not correctly inferred by the <TT>configure</TT> script; the following switches are available:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>-ocaml-prefix</TT> to specify the prefix path to the OCaml installation (usually <TT>/usr/local</TT>);
+</LI><LI CLASS="li-itemize"><TT>-ocamlfind</TT> to specify the path to the <TT>ocamlfind</TT> executable;
+</LI><LI CLASS="li-itemize"><TT>-no-native-dynlink</TT> to disable the build of the native version of the generator, even if native dynamic linking is available.
+</LI></UL><!--TOC section Step 2: compilation-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc8">2.3</A>&#XA0;&#XA0;Step 2: compilation</H2><!--SEC END --><P>
+The actual build of Argot is launched by executing <TT>make all</TT>. When build is finished, it is possible to run some simple tests by running <TT>make tests</TT>.</P><!--TOC section Step 3: installation-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc9">2.4</A>&#XA0;&#XA0;Step 3: installation</H2><!--SEC END --><P>
+Argot is installed by executing <TT>make install</TT>. According to local settings, it may be necessary to acquire privileged accesses, running for example <TT>sudo</TT> <TT>make</TT> <TT>install</TT>. The actual installation directory depends on the use of <TT>ocamlfind</TT>: if present the files are placed inside the Findlib hierarchy, otherwise they are placed in the directory printed by the <TT>ocamldoc -customdir</TT> command (<I>i.&#XA0;e.</I> <TT>$PREFIX/lib/ocaml/ocamldoc/custom</TT>).
+
+</P><!--BEGIN NOTES chapter-->
+<HR CLASS="ffootnoterule"><DL CLASS="thefootnotes"><DT CLASS="dt-thefootnotes">
+<A NAME="note2" HREF="#text2">1</A></DT><DD CLASS="dd-thefootnotes">Findlib, a library manager for OCaml, is available at <TT><A HREF="http://projects.camlcity.org/projects/findlib.html">http://projects.camlcity.org/projects/findlib.html</A></TT>.
+</DD></DL>
+<!--END NOTES-->
+<!--TOC chapter Running Argot-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc10">Chapter&#XA0;3</A>&#XA0;&#XA0;Running Argot</H1><!--SEC END --><!--TOC section Through direct call to <TT>ocamldoc</TT>-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc11">3.1</A>&#XA0;&#XA0;Through direct call to <TT>ocamldoc</TT></H2><!--SEC END --><!--TOC subsection Without Findlib-->
+<H3 CLASS="subsection"><!--SEC ANCHOR -->Without Findlib</H3><!--SEC END --><P>
+Once built and installed, using Argot is as simple as switching from:
+</P><DIV CLASS="center">
+<TT>ocamldoc -html -d <I>destination-path files</I></TT><BR>
+ or<BR>
+ <TT>ocamldoc.opt -html -d <I>destination-path files</I></TT>
+</DIV><P>
+to:
+</P><DIV CLASS="center">
+<TT>ocamldoc -g argot.cmo -d <I>destination-path files</I></TT><BR>
+ or<BR>
+ <TT>ocamldoc.opt -g argot.cmxs -d <I>destination-path files</I></TT>
+</DIV><!--TOC subsection With Findlib-->
+<H3 CLASS="subsection"><!--SEC ANCHOR -->With Findlib</H3><!--SEC END --><P>
+Argot execution is akin to the previous section, except that the use of findlib implies to pass the installation directory to the <TT>ocamldoc</TT> tool, thus leading to:
+</P><DIV CLASS="center">
+<TT>ocamldoc -i <I>argot-path</I> -g argot.cmo -d <I>destination-path files</I></TT><BR>
+ or<BR>
+ <TT>ocamldoc.opt -i <I>argot-path</I> -g argot.cmxs -d <I>destination-path files</I></TT>
+</DIV><P>
+where <I><TT>argot-path</TT></I> is <TT>&#X2018;ocamlfind query argot&#X2018;</TT>.</P><!--TOC section Through <TT>ocamlbuild</TT>-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc12">3.2</A>&#XA0;&#XA0;Through <TT>ocamlbuild</TT></H2><!--SEC END --><P>
+Generating documentation through <TT>ocamlbuild</TT> implies to first create a <TT><I>modules</I>.odocl</TT> file containing the list of modules (one per line) to generate documentation for. Then, documentation can be generated by executing <TT>ocamlbuild</TT> <TT><I>modules</I>.docdir/index.html</TT>. In order to make use of Argot, the following line should be added to the <TT>_tags</TT> file:
+</P><DIV CLASS="center">
+<TT>"<I>modules</I>.docdir/index.html": argot</TT>
+</DIV><P>
+which marks the index file with the <TT>argot</TT> tag.<BR>
+
+It is thus necessary to handle the aforementioned tag by defining an <TT>ocamlbuild</TT> plugin. This implies to create a <TT>myocamlbuild.ml</TT> file with the contents presented by code sample&#XA0;<A HREF="#ocamlbuild-plugin">3.1</A>.<BR>
+
+The main code of the plugin calls the <TT>define_argot</TT> to replace the default <SPAN STYLE="font-variant:small-caps">html</SPAN> generator with Argot. The <TT>define_argot</TT> function takes four parameters:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+an optional <TT>search</TT> parameter (defaulting to <TT>true</TT>), indicating whether search information should be generated;
+</LI><LI CLASS="li-itemize">an optional <TT>frame</TT> parameter (defaulting to <TT>true</TT>), indicating whether search criteria should be presented in a frame;
+</LI><LI CLASS="li-itemize">an optional <TT>fulltext</TT> parameter (defaulting to <TT>true</TT>), indicating whether full-text search information should be generated;
+</LI><LI CLASS="li-itemize">a mandatory parameter of type <TT>(string * string) list</TT>, giving the definitions used by the <TT>TOKEN</TT> formatter.
+</LI></UL><P>
+All these parameters correspond to command-line switches whose meaning are detailed in chapter&#XA0;<A HREF="#ch:formatting">4</A> and&#XA0;<A HREF="#ch:search">6</A>.</P><BLOCKQUOTE CLASS="figure">
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Code sample 3.1: <A NAME="ocamlbuild-plugin"></A>Example of <TT>ocamlbuild</TT> plugin.</TD></TR>
+</TABLE></DIV>
+<PRE CLASS="verbatim">
+open Ocamlbuild_plugin
+open Ocamlbuild_pack
+
+let define_argot ?(search=true) ?(frame=true) ?(fulltext=true) defs =
+  let rec is_native spec = (* heuristics *)
+    match spec with
+    | S (hd :: _) -&gt; is_native hd
+    | A x | P x | Px x | Sh x -&gt; Filename.check_suffix x ".opt"
+    | V "OCAMLDOC" -&gt;
+        (try ignore (Command.search_in_path "ocamldoc.opt"); true with _ -&gt; false)
+    | Quote x -&gt; is_native x
+    | _ -&gt; true in
+  let gen =
+    if is_native !Options.ocamldoc then
+      [A"-g"; A"argot.cmxs"]
+    else
+      [A"-g"; A"argot.cmo"] in
+  let switches =
+    if search then
+      [A"-search"]
+      @ (if frame then [A"-search-frame"] else [])
+      @ (if fulltext then [A"-full-text"] else [])
+    else
+      [] in
+  let defs =
+    List.map
+      (fun (k, v) -&gt; [(A"-define"); (A k); (A v)])
+      defs in
+  let defs = List.flatten defs in
+  flag ["argot"] (S (gen @ switches @ defs));
+  let myocamldoc tags =
+    Ocaml_tools.ocamldoc_l_dir (tags -- "extension:html") in
+  rule "ocamldoc: argot"
+    ~prod:"%.docdir/index.html"
+    ~dep:"%.odocl"
+    ~stamp:"%.docdir/html.stamp"
+    ~insert:`top
+    (Ocaml_tools.document_ocaml_project ~ocamldoc:myocamldoc
+       "%.odocl"
+       "%.docdir/index.html"
+       "%.docdir")
+
+let () =
+  dispatch begin function
+    | After_rules -&gt;
+        define_argot ["a", "b"]
+    | _ -&gt; ()
+  end
+</PRE></BLOCKQUOTE><!--TOC chapter Argot formatting-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc13">Chapter&#XA0;4</A>&#XA0;&#XA0;Argot formatting</H1><!--SEC END --><P>
+<A NAME="ch:formatting"></A></P><!--TOC section Text formatting-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc14">4.1</A>&#XA0;&#XA0;Text formatting</H2><!--SEC END --><P>
+In addition to the already available <TT>{b ...}</TT> (for bold), <TT>{i ...}</TT> (for italic), and <TT>{e ...}</TT> (for emphasized), Argot provides the following text formatting modifiers:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>{s ...}</TT> for stroke;
+</LI><LI CLASS="li-itemize"><TT>{u ...}</TT> for underline;
+</LI><LI CLASS="li-itemize"><TT>{h ...}</TT> for highlight.
+</LI></UL><!--TOC section Tables-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc15">4.2</A>&#XA0;&#XA0;Tables</H2><!--SEC END --><P>
+In order to define tables, the following elements can be used:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>{table ...}</TT> to actually define a table;
+</LI><LI CLASS="li-itemize"><TT>{caption ...}</TT> to define its associated caption;
+</LI><LI CLASS="li-itemize"><TT>{row ...}</TT> to add a row to the table;
+</LI><LI CLASS="li-itemize"><TT>{header ...}</TT> to add an header cell to the row;
+</LI><LI CLASS="li-itemize"><TT>{data ...}</TT> to add a data cell to the row;
+</LI><LI CLASS="li-itemize"><TT>{span <I>n</I> ...}</TT> (where <I>n</I> should be a positive integer) to add a data cell spanning <I>n</I> columns to the row.
+</LI></UL><P>
+Code sample&#XA0;<A HREF="#table-example">4.1</A> give an example of a complete table definition.</P><BLOCKQUOTE CLASS="figure">
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Code sample 4.1: <A NAME="table-example"></A>Example of a table.</TD></TR>
+</TABLE></DIV>
+<PRE CLASS="verbatim">
+{table {caption the caption}
+       {row {header key} {header value}}
+       {row {data key1}  {data {i data1}}}
+       {row {data key2}  {data {i data2}}}
+       {row {span 2 summary}}}
+</PRE></BLOCKQUOTE><!--TOC section Token substitution-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc16">4.3</A>&#XA0;&#XA0;Token substitution</H2><!--SEC END --><P>
+Token substitution allows one to use the value of either an environment variable or a command-line switch into an <SPAN STYLE="font-variant:small-caps">html</SPAN> page. This may for example be useful to insert the current date, or to specify the path of an element at documentation generation time:
+</P><PRE CLASS="verbatim">  {token DATE}
+  file {token FILE_PATH}/file.ext
+</PRE><P>The value of a token is first searched in <TT>-define <I>id value</I></TT> switches passed to the <TT>ocamldoc</TT> tool, and then searched among the environment variables.<BR>
+
+Instead of passing multiple <TT>-define</TT> switches, it is also possible to load a bunch of definitions from a file through the <TT>-definitions <I>file</I></TT> switch. Each line should have the following form: <TT><I>id</I>=<I>value</I></TT>, where the <TT>#</TT> character introduces comments (ending with the end of the line). Lines that do not conform to the given format are ignored.<BR>
+
+Finally, it is possible to refer to other variables when defining a new one (as long as this does not create a circular definition). As an example, the file represented by code sample&#XA0;<A HREF="#definition-file">4.2</A> could be passed to the <TT>-definitions</TT> switch.</P><BLOCKQUOTE CLASS="figure">
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Code sample 4.2: <A NAME="definition-file"></A>Example of definition file.</TD></TR>
+</TABLE></DIV>
+<PRE CLASS="verbatim">
+BASE=/path/to # prefix
+NAME=file
+FILE=$(BASE)/$(NAME).txt
+</PRE></BLOCKQUOTE><!--TOC section Images-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc17">4.4</A>&#XA0;&#XA0;Images</H2><!--SEC END --><P>
+It is possible to include images into the generated pages through <TT>{image <I>path</I>}</TT>. The image data will be directly embedded into the page using base64 format, in such a way that no external link remains in the generated <SPAN STYLE="font-variant:small-caps">html</SPAN>. There is thus no need to package the image along with the <SPAN STYLE="font-variant:small-caps">html</SPAN> pages.<BR>
+
+To avoid to use the full path to the image, it is possible to use the aforementioned token substitution inside the <TT>image</TT> formatter:
+</P><PRE CLASS="verbatim">  {image {token IMAGE_PATH}/img.png}
+</PRE><P>Then, one has to specify the value for <TT>IMAGE_PATH</TT> on the command-line through the <TT>-define</TT> switch seen above:
+</P><PRE CLASS="verbatim">  ocamldoc -define IMAGE_PATH /path/to/images ...
+</PRE><!--TOC section Folding-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc18">4.5</A>&#XA0;&#XA0;Folding</H2><!--SEC END --><P>
+When some explanation, albeit useful, is long and/or may appear as a digression, it is possible to <I>fold</I> it. It means that the texte inside a <CODE>{fold</CODE> <I>digression</I><CODE>}</CODE> will appear as an ellipsis (<I>i.e.&#XA0;</I><TT>...</TT>) and will be <I>unfolded</I> (that is revealed) when the ellipsis will be clicked. At the opposite, clicking on the ellipsis while the <I>foldable</I> text is visible will make it disappear. Any formatting instruction can be used in the digression.
+
+</P><!--TOC chapter Argot tags-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc19">Chapter&#XA0;5</A>&#XA0;&#XA0;Argot tags</H1><!--SEC END --><P>Argot also defines a bunch of new tags that can be used to enhance documentation. Some of these tags come with image icons; these have been designed by Mark James, released under the Creative Commons Attribution 2.5 License, and are available at <TT><A HREF="http://www.famfamfam.com/lab/icons/silk/">http://www.famfamfam.com/lab/icons/silk/</A></TT>.<BR>
+
+The additional tags are:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>@obvious</TT>, a bare placeholder;
+</LI><LI CLASS="li-itemize"><TT>@typevar</TT>, to document type variables in the same way <TT>@param</TT> is used for parameters;
+</LI><LI CLASS="li-itemize"><TT>@copyright</TT> and <TT>@license</TT> to be used along with the <TT>@author</TT> parameter;
+</LI><LI CLASS="li-itemize"><TT>@alias</TT>, <TT>@synonym</TT>, and <TT>@equivalent</TT>, to define synonyms or equivalences;<BR>
+ </LI><LI CLASS="li-itemize"><TT>@todo</TT>, or <TT>@unimplemented</TT>, to mark an implementation-in-progress;
+</LI><LI CLASS="li-itemize"><TT>@todoc</TT>, or <TT>@docme</TT>, to mark a documentation-in-progress;
+</LI><LI CLASS="li-itemize"><TT>@tofix</TT>, or <TT>@fixme</TT>, to mark a fix-in-progress;<BR>
+ </LI><LI CLASS="li-itemize"><TT>@stateful</TT>, to mark that a given function relies on a state;
+</LI><LI CLASS="li-itemize"><TT>@threadsafe</TT>, to mark that a given function can be used in a multithread context;
+</LI><LI CLASS="li-itemize"><TT>@threadunsafe</TT>, to mark that a given function cannot be used in a multithread context;<BR>
+ </LI><LI CLASS="li-itemize"><TT>@attention</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_attention" alt="new" title="new"
+align="middle"> icon;
+</LI><LI CLASS="li-itemize"><TT>@bug</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_bug" alt="new" title="new"
+align="middle"> icon;
+</LI><LI CLASS="li-itemize"><TT>@error</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_error" alt="new" title="new"
+align="middle"> icon;
+</LI><LI CLASS="li-itemize"><TT>@info</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_info" alt="new" title="new"
+align="middle"> icon;
+</LI><LI CLASS="li-itemize"><TT>@new</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_new" alt="new" title="new"
+align="middle"> icon;
+</LI><LI CLASS="li-itemize"><TT>@note</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_note" alt="new" title="new"
+align="middle"> icon;
+</LI><LI CLASS="li-itemize"><TT>@remark</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_remark" alt="new" title="new"
+align="middle"> icon;
+</LI><LI CLASS="li-itemize"><TT>@warning</TT>, to introduce text by the <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_warning" alt="new" title="new"
+align="middle"> icon.
+</LI></UL><!--TOC paragraph -->
+<H5 CLASS="paragraph"><!--SEC ANCHOR --></H5><!--SEC END --><P>
+The <TT>@license</TT> tag will only print its argument if it does not recognize the license, but will create a link to the actual webpage of the license otherwise. The list of predefined licenses is the following (the recognition being case insensitive):
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>gpl</TT>, <TT>gpl1</TT>, and <TT>gplv1</TT> will point to <TT><A HREF="http://www.gnu.org/licenses/old-licenses/gpl-1.0.html">http://www.gnu.org/licenses/old-licenses/gpl-1.0.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>gpl2</TT>, and <TT>gplv2</TT> will point to <TT><A HREF="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>gpl3</TT>, and <TT>gplv3</TT> will point to <TT><A HREF="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>lgpl</TT>, and <TT>lgplv2</TT> will point to <TT><A HREF="http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html">http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>lgpl21</TT>, <TT>lgpl2.1</TT>, <TT>lgpl2_1</TT>, <TT>lgplv21</TT>, <TT>lgplv2.1</TT>, and <TT>lgplv2_1</TT> will point to <TT><A HREF="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>lgpl3</TT>, and <TT>lgplv3</TT> will point to <TT><A HREF="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>agpl</TT> will point to <TT><A HREF="http://www.gnu.org/licenses/agpl.html">http://www.gnu.org/licenses/agpl.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>bsd</TT> will point to <TT><A HREF="http://www.freebsd.org/copyright/license.html">http://www.freebsd.org/copyright/license.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>mit</TT> will point to <TT><A HREF="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</A></TT>
+</LI><LI CLASS="li-itemize"><TT>apache</TT> will point to <TT><A HREF="http://www.apache.org/licenses/">http://www.apache.org/licenses/</A></TT>
+</LI><LI CLASS="li-itemize"><TT>qpl</TT> will point to <TT><A HREF="http://doc.trolltech.com/3.0/license.html">http://doc.trolltech.com/3.0/license.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>cecill</TT>, and <TT>cecill-a</TT> will point to <TT><A HREF="http://www.cecill.info/licences/Licence_CeCILL_V2-en.html">http://www.cecill.info/licences/Licence_CeCILL_V2-en.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>cecill-b</TT> will point to <TT><A HREF="http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html">http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html</A></TT>
+</LI><LI CLASS="li-itemize"><TT>cecill-c</TT> will point to <TT><A HREF="http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html">http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html</A></TT>
+</LI></UL><!--TOC chapter Search-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc20">Chapter&#XA0;6</A>&#XA0;&#XA0;Search</H1><!--SEC END --><P>
+<A NAME="ch:search"></A>
+Argot is able to embed search facilities<SUP><A NAME="text3" HREF="#note3">1</A></SUP> into the generated pages when passed the <TT>-search</TT> command-line switch. The default behaviour is to open a search window by clicking on the magnifying glass (<I>i.e.&#XA0;</I> <IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAA1JREFUCNdjYGBgYAAAAAUAAV7zKjoAAAAASUVORK5CYII=" class="argot_search" alt="new" title="new"
+align="middle">) that appears on the <TT>index.html</TT> page as well as on each module page. However, it is possible to have the search pane in a frame by passing the <TT>-search-frame</TT> command-line switch; <TT>argot_index.html</TT> is then the main file.<BR>
+
+The search panel is composed of two parts: the upper part allowing to select search criteria, and the lower part displaying results. Clicking on a search result will make the main window point to the clicked element.<BR>
+
+Five search modes are provided:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+search by exact name&#XA0;;
+</LI><LI CLASS="li-itemize">search by regular expression over names&#XA0;;
+</LI><LI CLASS="li-itemize">search by type;
+</LI><LI CLASS="li-itemize">search by type using manifests;
+</LI><LI CLASS="li-itemize">full-text search.
+</LI></UL><!--TOC paragraph Search by name-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Search by name</H5><!--SEC END --><P> can be made on simple names as well as on fully qualified names. Moreover, all names can be used&#XA0;: values, types, modules, constructors, <I>etc</I>.</P><!--TOC paragraph Search by regular expression-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Search by regular expression</H5><!--SEC END --><P> is akin to search by name except that all names matching the passed regular expression are returned. The regular expression should be written using the JavaScript syntax<SUP><A NAME="text4" HREF="#note4">2</A></SUP>. As an example, it is possible to retrieve all the elements starting with <TT>fold</TT> by using the following regular expression: <TT>fold.*</TT>.</P><!--TOC paragraph Search by type-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Search by type</H5><!--SEC END --><P> allows to search for a value by giving its type<SUP><A NAME="text5" HREF="#note5">3</A></SUP>. It is based on the ideas put forward by Roberto Di Cosmo (in particular the <TT>ocamlsearch</TT> tool for CamlLight). This means that the search does not retrieve values with <I>exactly</I> the same type, but with values whose types are <I>isomorphic</I><SUP><A NAME="text6" HREF="#note6">4</A></SUP>. Practically this means that for example:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<TT>int -&gt; float -&gt; int</TT>, <TT>float -&gt; int -&gt; int</TT>, and <TT>float * int -&gt; int</TT> are isomorphic (because the differences are only in the way and order parameters are passed);
+</LI><LI CLASS="li-itemize"><TT>string</TT> and <TT>unit -&gt; string</TT> are isomorphic (because one always has a <TT>unit</TT> value at hand);
+</LI><LI CLASS="li-itemize"><TT>&#X2019;from list -&gt; (&#X2019;from -&gt; &#X2019;to) -&gt; &#X2019;to list</TT> and <TT>(&#X2019;a -&gt; &#X2019;b) -&gt; &#X2019;a list -&gt; &#X2019;b list</TT> are isomorphic (because type variables can be renamed, and parameters reordered).
+</LI></UL><P>
+<I>note 1:</I> labels are just ignored during search<BR>
+<I>note 2:</I> a signature containing optional arguments is considered as the set of all signatures that can be generated by including/discarding the optional arugments</P><!--TOC paragraph Search by type using manifests-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Search by type using manifests</H5><!--SEC END --><P> is similar to bare search by type, except that types are replaced by their manifests if provided. More, in this context, record types are mapped to tuples by droping the field names. Practically, this means that searching for type <TT>float * float -&gt; float</TT> will return (among others) <TT>Complex.norm</TT> whose type is <TT>Complex.t -&gt; float</TT>. Indeed, as <TT>Complex.t</TT> has manifest <TT>{ re : float; im : float; }</TT>, it is clearly isomorphic to <TT>float * float</TT>.</P><!--TOC paragraph Full-text search-->
+<H5 CLASS="paragraph"><!--SEC ANCHOR -->Full-text search</H5><!--SEC END --><P> is the ability to search words appearing in the documentation. Words should be separated by spaces, and the result set will present the elements whose documentation contains all the words.
+
+</P><!--BEGIN NOTES chapter-->
+<HR CLASS="ffootnoterule"><DL CLASS="thefootnotes"><DT CLASS="dt-thefootnotes">
+<A NAME="note3" HREF="#text3">1</A></DT><DD CLASS="dd-thefootnotes">Search features need JavaScript to be available and enabled in the browser used to consult the documentation.
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note4" HREF="#text4">2</A></DT><DD CLASS="dd-thefootnotes">See <TT><A HREF="http://www.w3schools.com/jsref/jsref_obj_regexp.asp">http://www.w3schools.com/jsref/jsref_obj_regexp.asp</A></TT> for reference.
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note5" HREF="#text5">3</A></DT><DD CLASS="dd-thefootnotes">As of version 1.1, type-based search is still experimental and does not support the following features: objects, polymorphic variants, and modules.
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note6" HREF="#text6">4</A></DT><DD CLASS="dd-thefootnotes">See <TT><A HREF="http://www.dicosmo.org/ResearchThemes/ISOS/ISOShomepage.html">http://www.dicosmo.org/ResearchThemes/ISOS/ISOShomepage.html</A></TT> for more information.
+</DD></DL>
+<!--END NOTES-->
+<!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+<A HREF="http://hevea.inria.fr/index.html">H<FONT SIZE=2><sup>E</sup></FONT>V<FONT SIZE=2><sup>E</sup></FONT>A</A>.</EM></BLOCKQUOTE></BODY>
+</HTML>
